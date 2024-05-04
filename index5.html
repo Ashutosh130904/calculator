@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculater</title>
+    <link rel="stylesheet" href="style5.css">
+    <style>
+        *{
+    padding:0px;
+    margin:0px;
+}
+
+body{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.calculater{
+    height:400px;
+    width:320px;
+    border: 1px solid black;
+    background: rgb(201, 130, 37);
+    
+}
+
+input{
+    width:250px;
+    height:25px;
+    margin:10px;
+    padding:15px;
+    text-align:right;
+    font-size:25px;
+    cursor:pointer;
+
+}
+
+input::placeholder{
+    text-align:right;
+    font-size:25px;
+    color:black;
+
+}
+
+button{
+    height:60px;
+    width:60px;
+    border:none;
+    border-radius: 50%;
+    margin:2px;
+    margin-left:9px ;
+    font-size:25px;
+    cursor:pointer;
+}
+
+.equal{
+    background-color: rgb(73, 192, 18);
+}
+    </style>
+</head>
+<body>
+    <div class="calculater">
+
+        <input type="text" placeholder="0" id="input-box">
+
+        <div>
+            <button class="operator">AC</button>
+            <button class="operator">DEL</button>
+            <button class="operator">%</button>
+            <button class="operator">/</button>
+        </div>
+        <div>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button class="operator">*</button>
+        </div>
+        <div>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button class="operator">-</button>
+        </div>
+        <div>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button class="operator">+</button>
+        </div>
+        <div>
+            <button>00</button>
+            <button>0</button>
+            <button>.</button>
+            <button class="equal">=</button>
+        </div>
+        
+    </div>
+
+    <script>
+        
+let input=document.getElementById('input-box');
+let button=document.querySelectorAll('button');
+
+let string = "";
+let arr = Array.from(button);
+
+arr.forEach(button=> {
+    button.addEventListener('click',(e)=>{
+        if(e.target.innerHTML == '='){
+            string=eval(string);
+            input.value=string;
+        }
+
+        else if(e.target.innerHTML=='AC'){
+            string="";
+            input.value=string;
+        }
+        else if(e.target.innerHTML=='DEL'){
+            string=string.substring(0,string.length-1);
+            input.value=string;
+        }
+        else{
+            string += e.target.innerHTML;
+        input.value=string;
+        }
+        
+    })
+})
+    </script>
+</body>
+</html>
